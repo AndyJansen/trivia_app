@@ -25,6 +25,7 @@
 ### Answering Trivia Questions
 [] user can choose trivia category
 
+
 [] generate random trivia question created by other users
 
 [] display if user got question right
@@ -52,3 +53,4 @@
 [] use TDD and submit test suite
 
 [] use ajax to enhance front-end
+
