@@ -3,6 +3,7 @@
 
 ### General Requirements:
 [x] Use PostgreSQL
+
 [] Deploy to Heroku
 
 ### User Management:
