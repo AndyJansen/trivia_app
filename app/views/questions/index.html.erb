@@ -7,7 +7,12 @@
   <tr>
     <th>Category</th>
     <th>Question</th>
-    <th>Answer</th>
+    <th>Correct Answer</th>
+    <th>Answer Option One</th>
+    <th>Answer Option Two</th>
+    <th>Answer Option Two</th>
+
+
 
     <th colspan="2"></th>
   </tr>
@@ -17,6 +22,10 @@
       <td><%= question.category %></td>
       <td><%= question.question %></td>
       <td><%= question.correct_answer %></td>
+      <td><%= question.answer_option_one %></td>
+      <td><%= question.answer_option_two %></td>
+      <td><%= question.answer_option_three %></td>
+
       <td><%= link_to 'Edit', edit_user_question_path(current_user, question) %></td>
       <td><%= link_to 'Delete', user_question_path(current_user, question),
               method: :delete,
