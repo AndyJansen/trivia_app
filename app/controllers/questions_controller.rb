@@ -6,7 +6,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:user_id])
     @question = Question.find(params[:id])
   end
 
@@ -20,7 +19,20 @@ class QuestionsController < ApplicationController
     @question.save
     # redirect_to user_question_path(current_user, @question)
     redirect_to new_user_question_path
+  end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+
+    if @question.update(question_params)
+      redirect_to user_question_path(current_user, @question)
+    else
+      render 'edit'
+    end
   end
 
 
