@@ -16,9 +16,11 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     
-    @question.save
+    if @question.save
+      flash[:alert] = 'Success'
     # redirect_to user_question_path(current_user, @question)
-    redirect_to new_user_question_path
+      redirect_to new_user_question_path
+    end
   end
 
   def edit
@@ -38,7 +40,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:question, :correct_answer, :category, :user_id, :answer_option_one, :answer_option_two,
+    params.require(:question).permit( :question, :correct_answer, :category, :user_id, :answer_option_one, :answer_option_two,
     :answer_option_three)
   end
 end

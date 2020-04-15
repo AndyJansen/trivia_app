@@ -1,9 +1,32 @@
-<h1>Welcome!</h1>
-<p><%= @user %></p>
-
-<%= link_to "Create a new question", new_user_question_path(:user_id => current_user.id) %>
-<%# <%= link_to 'Edit', edit_user_question_path(:user_id => current_user.id) %> %>
+<h1>Welcome!</h1> <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+<p><%= current_user.email %></p>
 
 
+<h3> Here are all of the questions you have contributed. Feel free to create a new question, edit, or delete below! </h3>
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Question</th>
+    <th>Answer</th>
 
-<%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.category %></td>
+      <td><%= question.question %></td>
+      <td><%= question.correct_answer %></td>
+      <td><%= link_to 'Edit', edit_user_question_path(current_user, question) %></td>
+     
+
+     
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to "Create a new question", new_user_question_path(current_user, @question) %>
+
+
+
+
