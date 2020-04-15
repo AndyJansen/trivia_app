@@ -1,0 +1,39 @@
+
+<h1>Edit Question</h1>
+ 
+<%= form_for @question, url: user_question_path do |form| %>
+ 
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@question.errors.count, "error") %> prohibited
+        this question from being saved:
+      </h2>
+      <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :category %>:
+  <%= form.select(:category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %><br>
+  <%= form.label :question %>:
+  <%= form.text_field :question %><br>
+  <%= form.label :correct_answer %>:
+  <%= form.text_field :correct_answer %><br>
+  <%= form.label :answer_option_one %>:
+  <%= form.text_field :answer_option_one %><br>
+  <%= form.label :answer_option_two %>:
+  <%= form.text_field :answer_option_two %><br>
+  <%= form.label :answer_option_three %>:
+  <%= form.text_field :answer_option_three %><br>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Back', user_questions_path %>
