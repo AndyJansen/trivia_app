@@ -8,12 +8,12 @@
 [x] user can create account
 [x] user can login
 [x] user can logout
-[] user can create a new trivia question
+[x] user can create a new trivia question
 [] user can answer trivia questions
 [] user can view user high scores
 
 ### Creating A New Trivia Question
-[] form allows question to ask, answer to the question, and category for the question
+[x] form allows question to ask, answer to the question, and category for the question
 [] after trivia is finished redirect to create trivia page again
 
 ### Answering Trivia Questions
