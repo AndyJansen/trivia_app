@@ -1,5 +1,4 @@
-# App requirements
-### Objective: for users to answer trivia questions to gain points, as well as for users to create their own trivia questions
+
 
 ### General Requirements:
 [x] Use PostgreSQL
@@ -39,3 +38,5 @@
 
 ### Resources Used
 https://medium.com/@mchisti/creating-simple-users-in-rails-with-devise-gem-tutorial-cd91d2ef36d5
+=======
+
