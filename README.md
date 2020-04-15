@@ -6,8 +6,9 @@
 [] Deploy to Heroku
 
 ### User Management:
-[] user can create account
-[] user can login
+[x] user can create account
+[x] user can login
+[x] user can logout
 [] user can create a new trivia question
 [] user can answer trivia questions
 [] user can view user high scores
@@ -35,3 +36,6 @@
 [] display all user stats
 [] use TDD and submit test suite
 [] use ajax to enhance front-end
+
+### Resources Used
+https://medium.com/@mchisti/creating-simple-users-in-rails-with-devise-gem-tutorial-cd91d2ef36d5
