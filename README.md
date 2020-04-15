@@ -14,7 +14,7 @@
 
 ### Creating A New Trivia Question
 [x] form allows question to ask, answer to the question, and category for the question
-[] after trivia is finished redirect to create trivia page again
+[x] after trivia is finished redirect to create trivia page again
 
 ### Answering Trivia Questions
 [] user can choose trivia category

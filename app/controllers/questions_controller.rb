@@ -39,6 +39,13 @@ class QuestionsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy!
+
+    redirect_to root_path(current_user)
+  end
 
 
   private
