@@ -17,8 +17,10 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     
     if @question.save
-      flash[:alert] = 'Success'
-    # redirect_to user_question_path(current_user, @question)
+      flash[:alert] = 'Question saved successfully!'
+      redirect_to new_user_question_path
+    else 
+      flash[:alert] = 'Question could not be saved'
       redirect_to new_user_question_path
     end
   end
@@ -31,6 +33,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     if @question.update(question_params)
+      flash[:alert] = 'Question updated successfully!'
       redirect_to user_question_path(current_user, @question)
     else
       render 'edit'
