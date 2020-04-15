@@ -6,7 +6,13 @@
   <%= f.select(:category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %><br>
   <%= f.label :question %>:
   <%= f.text_field :question %><br>
-  <%= f.label :answer %>:
-  <%= f.text_area :answer, size: "60x12" %><br>
+  <%= f.label :correct_answer %>:
+  <%= f.text_field :correct_answer %><br>
+  <%= f.label :answer_option_one %>:
+  <%= f.text_field :answer_option_one %><br>
+  <%= f.label :answer_option_two %>:
+  <%= f.text_field :answer_option_two %><br>
+  <%= f.label :answer_option_three %>:
+  <%= f.text_field :answer_option_three %><br>
   <%= f.submit "Create" %>
 <% end %>
