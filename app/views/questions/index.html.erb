@@ -16,7 +16,7 @@
 
     <th colspan="2"></th>
   </tr>
- 
+
   <% @questions.each do |question| %>
     <tr>
       <td><%= question.category %></td>
@@ -31,6 +31,7 @@
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
 
+
      
 
      
@@ -41,5 +42,9 @@
 <%= link_to "Create a new question", new_user_question_path(current_user, @question) %>
 
 
+<%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions) %>
 
+
+
+<h3> add link to view score </h3>
 
