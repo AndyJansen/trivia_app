@@ -1,0 +1,32 @@
+<h1> Start Quiz Here </h1>
+
+<h2> First, select a category </h2>
+
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Question</th>
+    <%# <th>Correct Answer</th>
+    <th>Answer Option One</th>
+    <th>Answer Option Two</th>
+    <th>Answer Option Two</th> %>
+
+    <th colspan="2"></th>
+  </tr>
+
+<% @questions.each do |question| %>
+    <tr>
+      <td><%= question.category %></td>
+      <td><%= question.question %></td>
+      <td><%= question.correct_answer %></td>
+      <td><%= question.answer_option_one %></td>
+      <td><%= question.answer_option_two %></td>
+      <td><%= question.answer_option_three%></td> 
+    </tr>
+  <% end %>
+
+  </table>
+  
+<%= link_to 'Back', user_questions_path %>
+  
