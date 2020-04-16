@@ -1,8 +1,11 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
+  # load_and_authorize_resource
 
   def index
-    @questions = Question.all
+    user = current_user
+    @questions = Question.where(:user_id => user.id)
+    # @questions = Question.all
   end
 
   def show
@@ -15,6 +18,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
+    @question.user_id = current_user.id
     
     if @question.save
       flash[:alert] = 'Question saved successfully!'
@@ -39,7 +43,7 @@ class QuestionsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @question = Question.find(params[:id])
     @question.destroy!
@@ -47,10 +51,17 @@ class QuestionsController < ApplicationController
     redirect_to root_path(current_user)
   end
 
+  def gen_random_question
+    ids = Question.pluck(:id)
+    random_model = Question.find(ids.sample)
+  end
+  helper_method :gen_random_question
+
 
   private
   def question_params
     params.require(:question).permit( :question, :correct_answer, :category, :user_id, :answer_option_one, :answer_option_two,
     :answer_option_three)
   end
+
 end
