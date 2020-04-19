@@ -1,13 +1,10 @@
-<h1> Index </h1>
-<table>
-<% @quiz.each do |quiz| %>
-<tr>
-  <td><%= quiz.quiz_category %></td>
-  <td><%= quiz.score %></td>
-  <%end%>
-</tr>
 
-</table>
+<%= form_for @quiz, url: user_quizzes_path, method: :post do |f| %>
+<%= f.label :quiz_category %>:
+<%= f.select(:quiz_category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %>
+<%= f.submit 'Start Trivia'%>
+<% end %>
 
 
   
+<%= link_to 'Back', user_questions_path %>
