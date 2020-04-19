@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
   def index
     user = current_user
     @questions = Question.where(:user_id => user.id)
-    # @questions = Question.all
   end
 
   def show
@@ -50,13 +49,6 @@ class QuestionsController < ApplicationController
 
     redirect_to root_path(current_user)
   end
-
-  def gen_random_question
-    ids = Question.pluck(:id)
-    random_model = Question.find(ids.sample)
-  end
-  helper_method :gen_random_question
-
 
   private
   def question_params
