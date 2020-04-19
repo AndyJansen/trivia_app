@@ -1,32 +1,13 @@
-<h1> Start Quiz Here </h1>
-
-<h2> First, select a category </h2>
-
-
+<h1> Index </h1>
 <table>
-  <tr>
-    <th>Category</th>
-    <th>Question</th>
-    <%# <th>Correct Answer</th>
-    <th>Answer Option One</th>
-    <th>Answer Option Two</th>
-    <th>Answer Option Two</th> %>
+<% @quiz.each do |quiz| %>
+<tr>
+  <td><%= quiz.quiz_category %></td>
+  <td><%= quiz.score %></td>
+  <%end%>
+</tr>
 
-    <th colspan="2"></th>
-  </tr>
+</table>
 
-<% @questions.each do |question| %>
-    <tr>
-      <td><%= question.category %></td>
-      <td><%= question.question %></td>
-      <td><%= question.correct_answer %></td>
-      <td><%= question.answer_option_one %></td>
-      <td><%= question.answer_option_two %></td>
-      <td><%= question.answer_option_three%></td> 
-    </tr>
-  <% end %>
 
-  </table>
-  
-<%= link_to 'Back', user_questions_path %>
   

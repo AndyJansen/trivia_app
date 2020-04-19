@@ -1,11 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  # load_and_authorize_resource
 
   def index
     user = current_user
     @questions = Question.where(:user_id => user.id)
-    # @questions = Question.all
   end
 
   def show
@@ -36,10 +34,11 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
 
-    if @question.update(question_params)
+    if @question.update!(question_params)
       flash[:alert] = 'Question updated successfully!'
       redirect_to user_question_path(current_user, @question)
     else
+      flash[:alert] = 'Question could not be updated!'
       render 'edit'
     end
   end
@@ -50,13 +49,6 @@ class QuestionsController < ApplicationController
 
     redirect_to root_path(current_user)
   end
-
-  def gen_random_question
-    ids = Question.pluck(:id)
-    random_model = Question.find(ids.sample)
-  end
-  helper_method :gen_random_question
-
 
   private
   def question_params
