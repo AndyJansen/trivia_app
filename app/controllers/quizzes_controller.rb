@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+
   def index
     @quizzes = Quiz.all
     @quiz = Quiz.new
@@ -6,6 +7,7 @@ class QuizzesController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
+
     @questions = Question.where(:category => @quiz.quiz_category).order("random()").limit(1)
     # @questions = Question.order("RANDOM()").limit(10)
 
@@ -24,6 +26,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new
     
     # @quiz.question_id = @question.id
+
   end
 
   def create
@@ -37,6 +40,7 @@ class QuizzesController < ApplicationController
       redirect_to user_quiz_path(current_user, @quiz)
     end
   end
+
 
   def edit
     @quiz = Quiz.find(params[:id])
@@ -53,6 +57,7 @@ class QuizzesController < ApplicationController
       render 'edit'
     end
   end
+
 
 
   private

@@ -3,6 +3,8 @@
 
 
 <h3> Here are all of the questions you have contributed. Feel free to create a new question, edit, or delete below! </h3>
+<%= link_to "Create a new question", new_user_question_path(current_user, @question) %><br><br>
+
 <table>
   <tr>
     <th>Category</th>
@@ -30,19 +32,12 @@
       <td><%= link_to 'Delete', user_question_path(current_user, question),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
-
-
-     
-
-     
     </tr>
   <% end %>
 </table>
 <br>
-<%= link_to "Create a new question", new_user_question_path(current_user, @question) %>
 
+<%= link_to 'Start Trivia', new_user_quiz_path(current_user, @questions) %><br>
 
-<%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions) %>
-
-
+<%= link_to 'View Results Here', user_quizzes_path(current_user, @questions) %>
 

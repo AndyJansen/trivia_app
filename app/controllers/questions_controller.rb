@@ -1,6 +1,5 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  # load_and_authorize_resource
 
   def index
     user = current_user
@@ -35,10 +34,11 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
 
-    if @question.update(question_params)
+    if @question.update!(question_params)
       flash[:alert] = 'Question updated successfully!'
       redirect_to user_question_path(current_user, @question)
     else
+      flash[:alert] = 'Question could not be updated!'
       render 'edit'
     end
   end

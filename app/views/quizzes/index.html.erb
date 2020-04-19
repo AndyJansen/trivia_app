@@ -1,3 +1,4 @@
+
 <%= form_for @quiz, url: user_quizzes_path, method: :post do |f| %>
 <%= f.label :quiz_category %>:
 <%= f.select(:quiz_category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %>
@@ -7,4 +8,3 @@
 
   
 <%= link_to 'Back', user_questions_path %>
-  
