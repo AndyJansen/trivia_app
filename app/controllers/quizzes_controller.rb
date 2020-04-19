@@ -7,7 +7,7 @@ class QuizzesController < ApplicationController
 
   def show
     @quiz = Quiz.find(params[:id])
-    
+
     @questions = Question.where(:category => @quiz.quiz_category).order("random()").limit(1)
     # @questions = Question.order("RANDOM()").limit(10)
 
@@ -24,6 +24,7 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
+
   # @quiz.question_id = @question.id
   end
 
@@ -31,12 +32,13 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(quiz_params)
     @quiz.user_id = current_user.id
 
-    
+
     if @quiz.save
       flash[:alert] = 'Good Luck!'
       redirect_to user_quiz_path(current_user, @quiz)
     end
   end
+
 
   def edit
     @quiz = Quiz.find(params[:id])
