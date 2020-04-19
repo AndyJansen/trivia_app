@@ -1,4 +1,4 @@
 class Quiz < ApplicationRecord
-  has_one :question
-  accepts_nested_attributes_for :question
+  has_many :questions
+  accepts_nested_attributes_for :questions
 end
