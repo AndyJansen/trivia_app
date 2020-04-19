@@ -37,7 +37,7 @@
 </table>
 <br>
 
-<%= link_to 'Start Trivia', new_user_quiz_path(current_user, @questions) %><br>
+<%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions) %><br>
 
 <%= link_to 'View Results Here', user_quizzes_path(current_user, @questions) %>
 

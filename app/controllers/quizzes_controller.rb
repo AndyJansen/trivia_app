@@ -15,7 +15,7 @@ class QuizzesController < ApplicationController
 
     # if @quiz.guess == @question.correct_answer
     #   flash[:alert] = 'You got it right!'
-    #   redirect_to user_quizzes_path
+     #   redirect_to user_quizzes_path
     # else
     #   flash[:alert] = "The correct answer was #{@question.correct_answer}"
     #   redirect_to user_quizzes_path
@@ -24,16 +24,14 @@ class QuizzesController < ApplicationController
 
   def new
     @quiz = Quiz.new
-    
-    # @quiz.question_id = @question.id
 
+  # @quiz.question_id = @question.id
   end
 
   def create
     @quiz = Quiz.new(quiz_params)
     @quiz.user_id = current_user.id
 
-    # @questions = Question.where(:category => @quiz.quiz_category)
 
     if @quiz.save
       flash[:alert] = 'Good Luck!'
@@ -57,7 +55,6 @@ class QuizzesController < ApplicationController
       render 'edit'
     end
   end
-
 
 
   private
