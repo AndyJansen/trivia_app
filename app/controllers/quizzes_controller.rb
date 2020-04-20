@@ -52,11 +52,15 @@ class QuizzesController < ApplicationController
     @user = current_user
 
     if @quiz.update!(quiz_params) && @quiz.guess == correct
+      @quiz.accuracy = true
+      @quiz.save!
       @user.score += 4
       @user.save!
       flash[:alert] = 'You got it right! Try another one below'
       redirect_to user_quizzes_path(current_user, @quiz)
     elsif @quiz.update!(quiz_params) && @quiz.guess != correct
+      @quiz.accuracy = false
+      @quiz.save!
       @user.score -= 1
       @user.save!
       flash[:alert] = "The correct answer was #{correct}. You guessed #{@quiz.guess}.Try another one below"

@@ -42,7 +42,7 @@
 ### View User High Scores
 [x] user should see their score and scores of others
 
-[] show which category the user has performed the best in
+[x] show which category the user has performed the best in
 
 #### Stretch Goals
 [] use tags instead of categories
