@@ -17,10 +17,6 @@
 
 <h2> Enter your guess below </h2>
 <%= form_for @quiz, url: user_quiz_path(current_user, @quiz) do |f| %>
-  <%# <%= f.label :score %>
-  <%# <%= f.text_field :score %><br>
-  <%# <%= f.label :running_score %>
-  <%# <%= f.text_field :running_score %><br> 
   <%= f.label :guess %>:
   <%= f.select(:guess, options_for_select(@answers)) %>
   <%= f.submit 'Submit Guess'%>
