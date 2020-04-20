@@ -2,15 +2,13 @@
 <h1> Start Quiz Here </h1>
 
   <h3>Question</h3><br>
-    <%# <th>Correct Answer</th>
-    <th>Answer Option One</th>
-    <th>Answer Option Two</th>
-    <th>Answer Option Two</th> %>
+
 <% @questions.each do |question| %>
     <%= question.id %><br>
     <%= question.category %><br>
-
     <%= question.question %><br>
+<%# <% end %> 
+<%# <% @answers.each do |question| %> 
 
     <%= question.correct_answer %><br>
     <%= question.answer_option_one %><br>
