@@ -7,15 +7,12 @@
     <%= question.id %><br>
     <%= question.category %><br>
     <%= question.question %><br>
-<%# <% end %> 
-<%# <% @answers.each do |question| %> 
+<% end %>
 
-    <%= question.correct_answer %><br>
-    <%= question.answer_option_one %><br>
-    <%= question.answer_option_two %><br>
-    <%= question.answer_option_three%> <br>
-
+<% @answers.each do |answer| %>
+    <%= answer %><br> 
   <% end %>
+ 
   </table>
 
 <h2> Enter your guess below </h2>

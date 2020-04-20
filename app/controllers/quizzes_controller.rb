@@ -8,6 +8,15 @@ class QuizzesController < ApplicationController
   def show
     @quiz = Quiz.find(params[:id])
     @questions = Question.where(:id => @quiz.question_id)
+    @answers = Question.where(:id => @quiz.question_id)
+    questions_to_hash = @questions.as_json
+    current_question = questions_to_hash[0]["id"]
+    @quiz.question_id = current_question
+
+    @answers = [questions_to_hash[0]["correct_answer"], 
+                questions_to_hash[0]["answer_option_one"], 
+                questions_to_hash[0]["answer_option_two"],
+                questions_to_hash[0]["answer_option_three"]].shuffle
   end
 
   def new
@@ -21,7 +30,6 @@ class QuizzesController < ApplicationController
     questions_to_hash = @questions.as_json
     current_question = questions_to_hash[0]["id"]
     @quiz.question_id = current_question
-
 
     if @quiz.save
       flash[:alert] = 'Good Luck!'
@@ -39,7 +47,6 @@ class QuizzesController < ApplicationController
     @question = Question.where(:id => @quiz.question_id)
     correct_to_hash = @question.as_json
     correct = correct_to_hash[0]["correct_answer"]
-
 
     if @quiz.update!(quiz_params) && @quiz.guess == correct
       flash[:alert] = 'You got it right! Try another one below'
