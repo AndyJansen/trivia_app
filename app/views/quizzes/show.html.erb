@@ -22,7 +22,7 @@
   <%# <%= f.label :running_score %>
   <%# <%= f.text_field :running_score %><br> 
   <%= f.label :guess %>:
-  <%= f.text_field :guess %><br>
+  <%= f.select(:guess, options_for_select(@answers)) %>
   <%= f.submit 'Submit Guess'%>
 <% end %>
 
