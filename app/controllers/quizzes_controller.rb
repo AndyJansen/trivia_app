@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @quizzes = Quiz.all
@@ -26,6 +27,7 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new(quiz_params)
     @quiz.user_id = current_user.id
+
     @questions = Question.where(:category => @quiz.quiz_category).order("random()").limit(1)
     questions_to_hash = @questions.as_json
     current_question = questions_to_hash[0]["id"]
@@ -47,12 +49,17 @@ class QuizzesController < ApplicationController
     @question = Question.where(:id => @quiz.question_id)
     correct_to_hash = @question.as_json
     correct = correct_to_hash[0]["correct_answer"]
+    @user = current_user
 
     if @quiz.update!(quiz_params) && @quiz.guess == correct
+      @user.score += 4
+      @user.save!
       flash[:alert] = 'You got it right! Try another one below'
       redirect_to user_quizzes_path(current_user, @quiz)
     elsif @quiz.update!(quiz_params) && @quiz.guess != correct
-      flash[:alert] = "The correct answer was #{correct}. Try another one below"
+      @user.score -= 1
+      @user.save!
+      flash[:alert] = "The correct answer was #{correct}. You guessed #{@quiz.guess}.Try another one below"
       redirect_to user_quizzes_path(current_user, @quiz)
     else
       flash[:alert] = 'Quiz could not be submitted!'

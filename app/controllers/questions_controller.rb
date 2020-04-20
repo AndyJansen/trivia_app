@@ -4,6 +4,8 @@ class QuestionsController < ApplicationController
   def index
     user = current_user
     @questions = Question.where(:user_id => user.id)
+    @user = current_user
+    @high_scores = User.order(score: :desc).limit(10)
   end
 
   def show

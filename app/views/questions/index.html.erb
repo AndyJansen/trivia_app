@@ -39,5 +39,15 @@
 
 <%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions) %><br>
 
-<%= link_to 'View Results Here', user_quizzes_path(current_user, @questions) %>
+<h3>You're current score is: </h3>
 
+
+<%= @user.score %>
+
+
+<h3> The current high score for all users is: </h3>
+<% @high_scores.each do |user|%>
+<%= user.email%><br>
+<%= user.score%><br>
+
+<%end%>
