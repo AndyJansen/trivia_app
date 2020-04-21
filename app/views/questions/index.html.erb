@@ -72,5 +72,17 @@
   </tr>
   <%end%>
 </table>
+<table class = "table-bordered table-hover mx-auto w-auto">
+  <tr>
+    <th> Underdogs </th>
+    <th> Score</th>
+  </tr>
+    <% @low_scores.each do |user|%>
+  <tr>
+    <td><%= user.email%></td>
+    <td><%= user.score%></td>
+  </tr>
+  <%end%>
+</table>
 </div>
 </body>
