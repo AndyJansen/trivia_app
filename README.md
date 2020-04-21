@@ -44,18 +44,5 @@
 
 [x] show which category the user has performed the best in
 
-#### Stretch Goals
-[] use tags instead of categories
-
-[] implement a reputation system for questions
-
-[] display all user stats
-
-[] use TDD and submit test suite
-
-[] use ajax to enhance front-end
-
-### Resources Used
-https://medium.com/@mchisti/creating-simple-users-in-rails-with-devise-gem-tutorial-cd91d2ef36d5
 
 
