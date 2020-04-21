@@ -1,8 +1,19 @@
+<nav class = "navbar navbar-light bg-dark">
+<h1> Select A Quiz Category </h1>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "btn-logout" %>
+</nav>
 
-<%= form_for @quiz, url: user_quizzes_path, method: :post do |f| %>
-<%= f.label :quiz_category %>:
-<%= f.select(:quiz_category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %>
-<%= f.submit 'Start Trivia'%>
-<% end %>
-
-  <%= link_to 'Back', user_questions_path %>
+<body class = "select text-center">
+  <div class = "text-center">
+    <%= form_for @quiz, url: user_quizzes_path, method: :post do |f| %>
+    <h3><%= f.label :quiz_category %>:</h3>
+  <br>
+      <div class = "dropdown">
+      <%= f.select(:quiz_category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %>
+      </div>
+  <br>
+    <%= f.submit 'Start Trivia', :class => "btn"%>
+    <% end %>
+    <%= link_to  'Back', user_questions_path, :class => "btn" %>
+  </div>
+</body>

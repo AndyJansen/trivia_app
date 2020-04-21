@@ -1,9 +1,12 @@
+<div class = "navbar navbar-light bg-dark text-center">
 <h1> Create A Question </h1>
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "btn-logout" %>
+</div>
 
-
+<body class = "text-center select">
 <%= form_for @question, url: user_questions_path do |f| %>
   <%= f.label :category %>:
-  <%= f.select(:category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']])) %><br>
+  <%= f.select(:category, options_for_select([['History'], ['Science'], ['Entertainment'], ['Sports'], ['Geography']]))  %><br>
   <%= f.label :question %>:
   <%= f.text_field :question %><br>
   <%= f.label :correct_answer %>:
@@ -14,7 +17,9 @@
   <%= f.text_field :answer_option_two %><br>
   <%= f.label :answer_option_three %>:
   <%= f.text_field :answer_option_three %><br>
-  <%= f.submit "Create" %>
+  <%= f.submit "Create", :class => "btn" %>
 <% end %>
 
-<%= link_to 'Back', user_questions_path %>
+<%= link_to 'Back', user_questions_path, :class => "btn" %>
+
+</body>

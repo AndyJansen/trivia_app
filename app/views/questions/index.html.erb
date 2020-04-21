@@ -1,11 +1,14 @@
-<h1>Welcome!</h1> <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-<p><%= current_user.email %></p>
+<div class = "navbar navbar-light bg-dark">
+<h1>Welcome, <%= current_user.email %>! </h1> 
+<%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "btn-logout" %>
+</div>
 
 
-<h3> Here are all of the questions you have contributed. Feel free to create a new question, edit, or delete below! </h3>
-<%= link_to "Create a new question", new_user_question_path(current_user, @question) %><br><br>
-
-<table>
+<br>
+<body class = "text-center select">
+<h3> Here are all of the questions you have contributed. Create, edit, or delete a question below! </h3>
+<br>
+<table class = "table table-bordered table-striped">
   <tr>
     <th>Category</th>
     <th>Question</th>
@@ -13,10 +16,9 @@
     <th>Answer Option One</th>
     <th>Answer Option Two</th>
     <th>Answer Option Two</th>
+    <th>Edit</th>
+    <th>Delete</th>
 
-
-
-    <th colspan="2"></th>
   </tr>
 
   <% @questions.each do |question| %>
@@ -28,29 +30,47 @@
       <td><%= question.answer_option_two %></td>
       <td><%= question.answer_option_three %></td>
 
-      <td><%= link_to 'Edit', edit_user_question_path(current_user, question) %></td>
+      <td><%= link_to 'Edit', edit_user_question_path(current_user, question), :class => "btn" %></td>
       <td><%= link_to 'Delete', user_question_path(current_user, question),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure?' },:class => "btn" %></td>
     </tr>
   <% end %>
 </table>
 <br>
-
-<%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions) %><br>
-
-<h3>You're current score is: </h3>
+<div>
 
 
-<%= @user.score %>
+<h2><%= link_to "Create a new question", new_user_question_path(current_user, @question), :class => "btn" %></h2>
 
+<h2><%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions),:class => "btn" %></h2>
 
-<h3> The current high score for all users is: </h3>
-<% @high_scores.each do |user|%>
-<%= user.email%><br>
-<%= user.score%><br>
+<div class = "nav">
+  <table class = "table-bordered table-hover mx-auto w-auto">
+  <tr>
+    <th>You're current score is: </th>
+  </tr>
+    <td><%= @user.score %></td>
+</table>
 
-<%end%>
+<table class = "table-bordered table-hover mx-auto w-auto">
+  <tr>
+    <th> Your best category: </th>
+  </tr>
+    <td><%= @best_category%></td>
+</table>
 
-<h3> Your best category </h3>
-<%= @best_category%><br>
+<table class = "table-bordered table-hover mx-auto w-auto">
+  <tr>
+    <th> Leaderboard </th>
+    <th> Score</th>
+  </tr>
+    <% @high_scores.each do |user|%>
+  <tr>
+    <td><%= user.email%></td>
+    <td><%= user.score%></td>
+  </tr>
+  <%end%>
+</table>
+</div>
+</body>
