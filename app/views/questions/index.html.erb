@@ -3,46 +3,6 @@
 <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "btn-logout" %>
 </div>
 
-
-<br>
-<body class = "text-center select">
-<h3> Here are all of the questions you have contributed. Create, edit, or delete a question below! </h3>
-<br>
-<table class = "table table-bordered table-striped">
-  <tr>
-    <th>Category</th>
-    <th>Question</th>
-    <th>Correct Answer</th>
-    <th>Answer Option One</th>
-    <th>Answer Option Two</th>
-    <th>Answer Option Two</th>
-    <th>Edit</th>
-    <th>Delete</th>
-
-  </tr>
-
-  <% @questions.each do |question| %>
-    <tr>
-      <td><%= question.category %></td>
-      <td><%= question.question %></td>
-      <td><%= question.correct_answer %></td>
-      <td><%= question.answer_option_one %></td>
-      <td><%= question.answer_option_two %></td>
-      <td><%= question.answer_option_three %></td>
-
-      <td><%= link_to 'Edit', edit_user_question_path(current_user, question), :class => "btn" %></td>
-      <td><%= link_to 'Delete', user_question_path(current_user, question),
-              method: :delete,
-              data: { confirm: 'Are you sure?' },:class => "btn" %></td>
-    </tr>
-  <% end %>
-</table>
-<br>
-<div>
-
-
-<h2><%= link_to "Create a new question", new_user_question_path(current_user, @question), :class => "btn" %></h2>
-
 <h2><%= link_to 'Start Trivia', user_quizzes_path(current_user, @questions),:class => "btn" %></h2>
 
 <div class = "nav">
@@ -91,6 +51,44 @@
   </tr>
     <td><%= @average_score%></td>
 </table>
+</div>
+<br>
+<body class = "text-center select">
+<h3> Here are all of the questions you have contributed. Create, edit, or delete a question below! </h3>
+<h2><%= link_to "Create a new question", new_user_question_path(current_user, @question), :class => "btn" %></h2>
+
+<br>
+<table class = "table table-bordered table-striped">
+  <tr>
+    <th>Category</th>
+    <th>Question</th>
+    <th>Correct Answer</th>
+    <th>Answer Option One</th>
+    <th>Answer Option Two</th>
+    <th>Answer Option Two</th>
+    <th>Edit</th>
+    <th>Delete</th>
+
+  </tr>
+
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.category %></td>
+      <td><%= question.question %></td>
+      <td><%= question.correct_answer %></td>
+      <td><%= question.answer_option_one %></td>
+      <td><%= question.answer_option_two %></td>
+      <td><%= question.answer_option_three %></td>
+
+      <td><%= link_to 'Edit', edit_user_question_path(current_user, question), :class => "btn" %></td>
+      <td><%= link_to 'Delete', user_question_path(current_user, question),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },:class => "btn" %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+
 
 </div>
 </body>
