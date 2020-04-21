@@ -8,6 +8,9 @@ class QuestionsController < ApplicationController
     @high_scores = User.order(score: :desc).limit(10)
     @low_scores = User.order(score: :asc).limit(10)
 
+    @average_score = User.average(:score).round
+
+
     most_accurate_category = Quiz.group(:quiz_category).where(accuracy: true, :user_id => user.id).count
     @best_category = most_accurate_category.key(most_accurate_category.values.max)
 
